@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Nosotros (Diseño Audaz) - Carnes La Golosa</title>
+  <meta name="description" content="Conoce la historia y la pasión detrás de Carnes La Golosa. Calidad y tradición en cada corte." />
+
+  <!-- Tipografías -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Estilos para el nuevo header */
+    .site-header-redesigned {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        background-color: #fff;
+        transition: box-shadow 0.3s ease, background-color 0.3s ease;
+        box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+    }
+    .site-header-redesigned .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 80px;
+        position: relative;
+    }
+    .header-nav-split {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+    }
+    .header-nav-split ul {
+        display: flex;
+        gap: 1.5rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    .header-nav-split a {
+        text-decoration: none;
+        color: var(--dark-gray);
+        font-weight: 500;
+        position: relative;
+        padding: 0.5rem 0;
+    }
+    .header-nav-split a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--primary-red);
+        transition: width 0.3s ease;
+    }
+    .header-nav-split a:hover::after,
+    .header-nav-split a.active::after {
+        width: 100%;
+    }
+    .header-logo-central {
+        position: absolute;
+        left: 50%;
+        top: 10px;
+        transform: translateX(-50%);
+        z-index: 10;
+    }
+    .header-logo-central a {
+        display: block;
+        background-color: #fff;
+        border-radius: 50%;
+        padding: 10px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+    }
+    .header-logo-central a:hover {
+        transform: scale(1.05);
+    }
+    .header-logo-central img {
+        width: 90px;
+        height: 90px;
+        display: block;
+    }
+    /* Animación para los items del menú */
+    @keyframes slideInFromCenter {
+        from {
+            opacity: 0;
+            transform: translateX(40px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    .header-nav-split.nav-left li {
+        opacity: 0;
+        animation: slideInFromCenter 0.5s ease-out forwards;
+    }
+    /* Retraso escalonado para cada item */
+    .header-nav-split.nav-left li:nth-child(1) { animation-delay: 0.3s; }
+    .header-nav-split.nav-left li:nth-child(2) { animation-delay: 0.2s; }
+    .header-nav-split.nav-left li:nth-child(3) { animation-delay: 0.1s; }
+    /* La animación se invierte para que el más cercano al logo aparezca primero */
+
+  </style>
+</head>
+<body>
+  <!-- ======== HEADER ======== -->
+  <header class="site-header-redesigned">
+    <div class="container">
+      <nav class="header-nav-split nav-left">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="nosotros.html" class="active">Nosotros</a></li>
+          <li><a href="tienda.html">Tienda</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-logo-central">
+        <a href="index.html">
+          <img src="img/golosa-logo.png" alt="Logo La Golosa">
+        </a>
+      </div>
+
+      <!-- Mantener acciones y menú móvil (se mostrarán en móvil) -->
+      <div class="header-actions-zenu" style="position: absolute; right: 65px; top: 50%; transform: translateY(-50%);">
+        <button class="search-icon" aria-label="Buscar">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+          </svg>
+        </button>
+      </div>
+
+      <button class="menu-toggle-zenu" id="menu-toggle" aria-label="Abrir menú" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%);">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ======== NAVEGACIÓN ======== -->
+  <div class="offcanvas-menu" id="side-menu">
+    <nav class="offcanvas-nav">
+        <div class="offcanvas-header">
+          <a href="index.html" class="logo">
+            <img src="img/golosa-logo.png" alt="Logo La Golosa" class="logo-img">
+            <span class="logo-text">La Golosa</span>
+          </a>
+        </div>
+        <ul class="offcanvas-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+            <li><a href="productos.html">Productos</a></li>
+            <li><a href="tienda.html">Tienda</a></li>
+            <li><a href="recetas.html">Recetas</a></li>
+            <li><a href="galeria.html">Galería</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+    </nav>
+  </div>
+
+  <!-- Contenedor principal -->
+  <div id="page-container">
+    <main>
+      <!-- ======== NOSOTROS (VERSIÓN AUDAZ) ======== -->
+      <section id="about-bold" class="about-layout-b" style="padding-top: 100px;">
+        <div class="about-bg-b"></div>
+        <div class="container">
+            <div class="about-content-b animate-on-scroll">
+              <h1 class="about-title-b">Nuestra Historia</h1>
+              <p>En <strong>Carnes La Golosa</strong> seleccionamos cada corte con trazabilidad y respeto por su origen. Trabajamos con productores locales que garantizan procesos responsables y una cadena de frío impecable.</p>
+              <p>Nuestra misión: ofrecer productos frescos, sabrosos y listos para la parrilla.</p>
+              <div class="cta-wrapper">
+                <a href="contacto.html" class="btn btn-primary cta-main">Contáctanos</a>
+              </div>
+            </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ======== FOOTER ======== --> 
+    <footer class="main-footer">
+      <div class="container">
+        <p>© <span id="year"></span> Carnes La Golosa. Todos los derechos reservados.</p>
+        <p><a href="#">Política de privacidad</a> | <a href="#">Términos y Condiciones</a></p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
